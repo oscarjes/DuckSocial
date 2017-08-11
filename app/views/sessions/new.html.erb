@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="columns">
+    <div class="column is-one-third">
+
+      <div class="card" style="margin-top: 25px;">
+        <header class="card-header">
+          <p class="card-header-title">
+            Log In
+          </p>
+        </header>
+        <div class="card-content">
+        <%= form_tag sessions_path do %>
+          <div class="content">
+            <div class="field">
+                <div class="control">
+                <%= text_field_tag :email, "", placeholder: "Email", class: "input"%>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                <%= password_field_tag :password, "", placeholder: "Password", class: "input"%>
+                </div>
+            </div>
+             <div class="field">
+                <div class="control">
+                  <%= button_tag "Log In", class: "button is-primary"%>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

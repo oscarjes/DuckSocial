@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation)
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :image_url)
   end
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def edit
@@ -34,8 +34,15 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-
-    if params[:user][:old_password]
+    if params[:user][:image_url]
+      if @user.update(image_url: params[:user][:image_url])
+      flash[:success] = "Profile picture changed successfully"
+      redirect_to profile_path
+      else
+        flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}."
+        redirect_to profile_path
+      end
+    elsif params[:user][:old_password]
       if @user.authenticate(params[:user][:old_password])
         @user.update(password: params[:user][:password], password_confirmation: params[:user][:password_confirmation])
         flash[:success] = "Password changed successfully"

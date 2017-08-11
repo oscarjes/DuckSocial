@@ -1,17 +1,20 @@
 <div class="columns">
+<div class="column is-half" style="margin-left: auto; margin-right: auto">
   <% @users.each do |user| %>
-  <div class="column is-one-third">
-    <div class="card">
+    <div class="card" style="margin-right: 20px; margin-bottom: 20px; margin-top: 10px;">
         <div class="card-content is-clearfix">
-          <div class="media-content">
-            <p class="title is-4"><%= user.firstname %> <%= user.lastname%></p>
-            <p class="subtitle is-6"><%= user.email%></p>
-            
+            <div class="media-left is-pulled-left">
+              <figure class="image is-96x96">
+                <img src="<%= user.image_url %>" alt="Image" style="border-radius: 50%;">
+              </figure>
+            </div>
+            <div class="media-content is-pulled-left">
+              <p class="title is-4"><%= user.firstname %> <%= user.lastname%></p>
+              <p class="subtitle is-6"><%= user.email%></p>
           </div>
           <%= button_to "Add Friend", root_path, class: "button is-primary is-pulled-right" %>
         </div>
-        
     </div>
-  </div>
   <% end %>
+   </div>
 </div>

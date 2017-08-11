@@ -31,8 +31,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bulma-rails', github: 'harley/bulma-rails'
 gem "font-awesome-rails"
-gem 'validates_email_format_of'
+#gem 'validates_email_format_of'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem "http"
+gem "validate_url"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

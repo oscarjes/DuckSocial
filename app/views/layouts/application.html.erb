@@ -18,10 +18,8 @@
       <div class="navbar-brand">
         <%= link_to icon("search", "Find Friends"), users_path, class: "navbar-item"  %>
       </div>
-      <div class="navbar-brand">
-        <%= link_to icon("user", "#{current_user.firstname}"), profile_path, class: "navbar-item"  %>
-      </div>
       <div class="navbar-end">
+        <%= link_to icon("cog", "Edit Profile"), profile_path, class: "navbar-item"  %>
         <%= link_to icon("sign-out", "Sign Out"), logout_path, class: "navbar-item", method: :post  %>
       </div>
       <% else %>

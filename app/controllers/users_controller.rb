@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   def edit
@@ -29,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = Users.all
   end
 
   def update

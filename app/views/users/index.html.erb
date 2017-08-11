@@ -1,1 +1,17 @@
-users index
+<div class="columns">
+  <% @users.each do |user| %>
+  <div class="column is-one-third">
+    <div class="card">
+        <div class="card-content is-clearfix">
+          <div class="media-content">
+            <p class="title is-4"><%= user.firstname %> <%= user.lastname%></p>
+            <p class="subtitle is-6"><%= user.email%></p>
+            
+          </div>
+          <%= button_to "Add Friend", root_path, class: "button is-primary is-pulled-right" %>
+        </div>
+        
+    </div>
+  </div>
+  <% end %>
+</div>

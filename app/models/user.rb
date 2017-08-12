@@ -3,6 +3,8 @@ class User < ApplicationRecord
   validates :lastname, presence: true, length: { in: 2..20 }
   validates :email, presence: true, uniqueness: true
   validates :image_url, url: true
+  has_many :friendships
+  has_many :friends, through: :friendships
   #validates_email_format_of :email, :message => "needs to be a valid email address."
   has_secure_password
 
@@ -24,4 +26,11 @@ class User < ApplicationRecord
     end
   end
 
+  def add_friend(friend)
+    friends << friend
+  end
+
+  def is_friend?(friend)
+    friends.include?(friend)
+  end
 end

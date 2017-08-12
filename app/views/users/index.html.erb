@@ -12,7 +12,14 @@
               <p class="title is-4"><%= user.firstname %> <%= user.lastname%></p>
               <p class="subtitle is-6"><%= user.email%></p>
           </div>
-          <%= button_to "Add Friend", root_path, class: "button is-primary is-pulled-right" %>
+          <% if current_user.is_friend?(user) %>
+            <%= link_to icon("user-times", "Remove friend"), unfriend_path(friend_id: user.id), class: "button is-info is-pulled-right", method: :delete %>
+          <% else %>
+            <%= form_for current_user.friendships.build(friend: user) do |f| %>
+              <%= f.hidden_field :friend_id %>
+              <%= button_to "Add Friend", friendships_path, class: "button is-primary is-pulled-right" %>
+            <% end %>
+          <% end %>
         </div>
     </div>
   <% end %>

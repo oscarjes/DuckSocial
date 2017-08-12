@@ -36,4 +36,17 @@ class User < ApplicationRecord
   def is_friend?(friend)
     friends.include?(friend)
   end
+
+  def self.except(user)
+    where.not(id: user.id)
+  end
+  
+  def self.recipient_options(user)
+    except(user).map{|e| [e.fullname, e.id]}
+  end
+
+  def fullname
+    fullname = firstname.titleize + " " + lastname.titleize
+    fullname
+  end
 end

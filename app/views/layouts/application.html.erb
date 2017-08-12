@@ -17,6 +17,7 @@
       <% if current_user %>
       <div class="navbar-brand">
         <%= link_to icon("search", "Find Friends"), users_path, class: "navbar-item"  %>
+        <%= link_to icon("envelope", "Messages"), inbox_path, class: "navbar-item"  %>
       </div>
       <div class="navbar-end">
         <%= link_to icon("cog", "Edit Profile"), profile_path, class: "navbar-item"  %>

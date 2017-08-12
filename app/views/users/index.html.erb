@@ -9,7 +9,7 @@
               </figure>
             </div>
             <div class="media-content is-pulled-left">
-              <p class="title is-4"><%= user.firstname %> <%= user.lastname%></p>
+              <p class="title is-4"><%= user.fullname %></p>
               <p class="subtitle is-6"><%= user.email%></p>
           </div>
           <% if current_user.is_friend?(user) %>

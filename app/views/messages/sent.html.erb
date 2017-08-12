@@ -9,7 +9,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>To: <%= message.recipient.firstname %> <%= message.recipient.lastname %></strong> <small><%= time_ago_in_words(message.created_at) %></small>
+          <strong>To: <%= message.recipient.fullname %></strong> <small><%= time_ago_in_words(message.created_at) %></small>
           <br>
           <%= message.body %>
       </div>

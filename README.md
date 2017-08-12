@@ -9,9 +9,9 @@ Minimalist social networking app for those tired of the noise of never-ending no
 - [x] Users can edit their user information on their profile pages
 - [x] Users can add users as friends
 - [x] Users can unfriend others
-- [ ] Users can send messages to other users
-- [ ] Users can receive messages from other users
-- [ ] Users can view their sent messages
+- [x] Users can send messages to other users
+- [x] Users can receive messages from other users
+- [x] Users can view their sent messages
 
 ## Bonus User Stories
 

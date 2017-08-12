@@ -5,6 +5,9 @@ class User < ApplicationRecord
   validates :image_url, url: true
   has_many :friendships
   has_many :friends, through: :friendships
+  has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
+  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
+  
   #validates_email_format_of :email, :message => "needs to be a valid email address."
   has_secure_password
 

@@ -1,0 +1,44 @@
+<% content_for(:content) do %>
+  <div class="columns">
+    <div class="column">
+    </div>
+    <div class="column is-half">
+      <div class="tabs is-centered is-boxed is-medium">
+        <ul>
+          <li class="<%= 'is-active' if current_page?(inbox_path) %>">
+            <a href="<%= inbox_path %>">
+              <span class="icon is-small"><i class="fa fa-inbox"></i></span>
+              <span>Inbox</span>
+            </a>
+          </li>
+          <li class="<%= 'is-active' if current_page?(messages_new_path) %>">
+            <a href="<%= messages_new_path %>">
+              <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+              <span>New</span>
+            </a>
+          </li>
+          <li class="<%= 'is-active' if current_page?(sent_path) %>">
+            <a href="<%= sent_path %>">
+              <span class="icon is-small"><i class="fa fa-send"></i></span>
+              <span>Sent</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="column">
+    </div>
+  </div>
+
+ <div class="columns">
+    <div class="column">
+    </div>
+    <div class="column is-half">
+      <%= yield %>
+    </div>
+  <div class="column">
+  </div>
+</div>
+<% end %>
+
+<%= render file: "layouts/application" %>

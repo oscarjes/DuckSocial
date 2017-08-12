@@ -1,0 +1,19 @@
+<% @messages.each do |message| %>
+
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="<%= message.sender.image_url %>" style="border-radius: 50%;">
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= message.sender.firstname %> <%= message.sender.lastname %></strong> <small><%= time_ago_in_words(message.created_at) %></small>
+          <br>
+          <%= message.body %>
+      </div>
+    </div>
+  </article>
+
+<% end %>

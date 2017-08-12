@@ -33,7 +33,7 @@
     </nav>
     <%= flash_messages %>
     <div class="container is-fluid">
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>
 </html>

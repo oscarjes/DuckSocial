@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get "profile" => "users#edit"
   post "update" => "users#update"
   delete "unfriend" => "friendships#destroy"
+  get 'inbox' => 'messages#inbox'
+  get 'messages/new'
+  get 'sent' => 'messages#sent'
 end

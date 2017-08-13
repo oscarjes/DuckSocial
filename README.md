@@ -2,6 +2,8 @@
 
 Minimalist social networking app for those tired of the noise of never-ending notifications and updates.
 
+Heroku: https://minimalnet.herokuapp.com/
+
 ![Video Walkthrough](minimalnet.gif)
 
 ## User Stories

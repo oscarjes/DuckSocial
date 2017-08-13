@@ -21,8 +21,8 @@
             <div class="media-content">
               <p class="title is-4"><%= @user.fullname %></p>
               <p class="subtitle is-6"><%= @user.email %></p>
-              <p class="subtitle is-6">Number of Friends added: <%= @user.friends.count %></p>
-              <p class="subtitle is-6">Added as a Friend by: <%= Friendship.friended_by_count(@user) %></p>
+              <p class="subtitle is-6">Number of Friends added: <%= @user.friends.count %><br>
+              Added as a Friend by: <%= Friendship.friended_by_count(@user) %></p>
             </div>
           </div> 
         </div>

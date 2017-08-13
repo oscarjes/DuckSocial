@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to root_path
     else
-      flash[:error] = "There was an error. Please try again."
+      flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}."
       render "new"
     end
   end

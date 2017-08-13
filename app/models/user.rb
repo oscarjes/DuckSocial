@@ -31,6 +31,20 @@ class User < ApplicationRecord
     end
   end
 
+  def self.generate_male_users(n = 25, gender = "male")
+    url = "https://randomuser.me/api?results=#{n}&gender=#{gender}"
+    body = HTTP.get(url).parse
+    body["results"].each do |person|
+      hash = {}
+      hash[:firstname] = person["name"]["first"]
+      hash[:lastname] = person["name"]["last"]
+      hash[:email] = person["email"]
+      hash[:password] = person["login"]["password"]
+      hash[:image_url] = person["picture"]["large"]
+      User.create! hash
+    end
+  end
+
   def add_friend(friend)
     friends << friend
   end

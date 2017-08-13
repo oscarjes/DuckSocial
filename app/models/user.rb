@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
   has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
+  has_many :wall_posts, foreign_key: "author_id", class_name: "WallPost"
+  has_many :wall_mentions, foreign_key: "mention_id", class_name: "WallPost"
   
   #validates_email_format_of :email, :message => "needs to be a valid email address."
   has_secure_password
@@ -37,12 +39,13 @@ class User < ApplicationRecord
     friends.include?(friend)
   end
 
-  def self.except(user)
-    where.not(id: user.id)
+  def added_as_friend_count(user)
+    added_list = friendships.find_by(friend_id: user.id)
+    added_list.count
   end
-  
-  def self.recipient_options(user)
-    except(user).map{|e| [e.fullname, e.id]}
+
+  def recipients
+    friends.map{|e| [e.fullname, e.id]}
   end
 
   def fullname

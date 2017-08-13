@@ -1,3 +1,6 @@
+<div class="card">
+  <div class="card-content">
+
 <% @messages.each do |message| %>
 
   <article class="media">
@@ -9,7 +12,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= message.sender.fullname %></strong> <small><%= time_ago_in_words(message.created_at) %></small>
+          <strong><%= message.sender.fullname %></strong> <small><%= time_ago_in_words(message.created_at) %> ago</small>
           <br>
           <%= message.body %>
       </div>
@@ -17,3 +20,6 @@
   </article>
 
 <% end %>
+
+</div>
+</div>

@@ -1,23 +1,21 @@
 <div class="columns">
-<div class="column">
-</div>
-<div class="column is-half">
+<div class="column is-half" style="margin-left: auto; margin-right: auto">
 
-  <%= form_tag users_path, method: "get" do %>
+    <%= form_tag friends_new_path, method: "get" do %>
   <div class="field has-addons" style="margin-right: 20px; margin-top: 25px; margin-bottom: 20px;">
     
     <div class="control is-expanded">
-      <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find a Friend"%>
+      <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find Someone"%>
     </div>
     <div class="control">
-    <%= button_tag "Search", class: "button is-info"%>
+    <%= button_tag "Search", class: "button is-primary"%>
     </div>
   </div>
-    <% end %>
+      <% end %>
 
 
   <% @users.each do |user| %>
-    <% if current_user.is_friend?(user) %>
+    <% unless current_user.is_friend?(user) %>
     <div class="card" style="margin-right: 20px; margin-bottom: 20px; margin-top: 10px;">
         <div class="card-content is-clearfix">
             <div class="media-left is-pulled-left">
@@ -30,14 +28,13 @@
               <p class="subtitle is-6" style="margin-top: 2px;">Number of Friends: <%= user.friends.count%><br>
               Friended by: <%= Friendship.friended_by_count(user) %></p>
           </div>
-          
-            <%= link_to icon("user-times", "Remove friend"), unfriend_path(friend_id: user.id), class: "button is-info is-pulled-right", method: :delete %>
-          
+            <%= form_for current_user.friendships.build(friend: user) do |f| %>
+              <%= f.hidden_field :friend_id %>
+              <%= button_to "Add Friend", friendships_path, class: "button is-primary is-pulled-right" %>
+            <% end %>
           </div>
-      </div>
-    <% end %>
-  <% end %>
+         </div>
+        <% end %>
+      <% end %>
    </div>
-   <div class="column">
-</div>
 </div>

@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def skip_if_logged_in
     if current_user
-      redirect_to root_path
+      redirect_to profile_path
     end
   end
 end

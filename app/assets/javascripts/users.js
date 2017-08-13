@@ -9,3 +9,4 @@ $(document).on("turbolinks:load", function(){
 
   $("a#password-toggle-icon").on('click', myClick);
 });
+

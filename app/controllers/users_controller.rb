@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index] 
+  before_action :require_login, only: [:index, :find, :edit, :show] 
   before_action :skip_if_logged_in, only: [:new]
 
   def new
@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new user_params
-    if user.save
-      log_in(user)
+    @user = User.new(user_params)
+    if @user.save
+      log_in(@user)
       redirect_to root_path
     else
       flash[:error] = "There was an error. Please try again."
@@ -23,6 +23,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
+    
+    if params[:q]
+      @users = @users.select{|s| s.fullname.include?(params["q"])}
+    end
+  end
+
+  def find
+    @users = User.where.not(id: current_user.id)
+
+    if params[:q]
+      @users = @users.select{|s| s.fullname.include?(params["q"])}
+    end
   end
 
   def edit
@@ -30,6 +42,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
+    wallposts_combo = current_user.wall_posts.all + current_user.wall_mentions.all
+    @wallposts = wallposts_combo.sort_by(&:created_at).reverse
+    @wallpost = WallPost.new
   end
 
   def update
@@ -59,4 +75,5 @@ class UsersController < ApplicationController
       redirect_to profile_path
     end
   end
+
 end

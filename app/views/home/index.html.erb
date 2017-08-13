@@ -1,2 +1,29 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="columns">
+  <div class="column">
+  </div>
+  <div class="column is-half">
+
+  <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 100px;">
+    <div class="card-content">
+      <p class="title">
+        MinimalNet is a minimalist social networking app for those tired of the noise of never-ending notifications and updates.
+      </p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <span>
+          Create an account <a href="<%= new_user_path %>">here</a>
+        </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          Log in <a href="<%= new_session_path %>">here</a>
+        </span>
+      </p>
+    </footer>
+  </div>
+  </div>
+
+  <div class="column">
+  </div>
+</div>

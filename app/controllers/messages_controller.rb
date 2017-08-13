@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
+  before_action :require_login, only: [:inbox, :sent, :new] 
   
   def inbox
-    @messages = current_user.received_messages
+    @messages = current_user.received_messages.sort_by(&:created_at).reverse
   end
 
   def sent

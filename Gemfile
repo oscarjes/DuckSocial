@@ -37,6 +37,9 @@ gem "http"
 gem "validate_url"
 
 gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-aws'
+
+gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

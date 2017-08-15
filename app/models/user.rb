@@ -9,12 +9,13 @@ class User < ApplicationRecord
   has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
   has_many :wall_posts, foreign_key: "author_id", class_name: "WallPost"
   has_many :wall_mentions, foreign_key: "mention_id", class_name: "WallPost"
+  mount_uploader :avatar, AvatarUploader
   
   #validates_email_format_of :email, :message => "needs to be a valid email address."
   has_secure_password
 
   def image_url_or_default
-    image_url.presence || "http://lorempixel.com/128/128/people/Fake-User/"
+    avatar.url || image_url.presence || "http://lorempixel.com/128/128/people/Fake-User/"
   end
 
   def self.generate_female_users(n = 25, gender = "female")

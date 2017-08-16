@@ -2,13 +2,14 @@ class User < ApplicationRecord
   validates :firstname, presence: true, length: { in: 2..20 }
   validates :lastname, presence: true, length: { in: 2..20 }
   validates :email, presence: true, uniqueness: true
-  validates :image_url, url: true
-  has_many :friendships
-  has_many :friends, through: :friendships
-  has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
-  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
-  has_many :wall_posts, foreign_key: "author_id", class_name: "WallPost"
-  has_many :wall_mentions, foreign_key: "mention_id", class_name: "WallPost"
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, dependent: :destroy
+  has_many :received_messages, foreign_key: "recipient_id", class_name: "Message", dependent: :destroy
+  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
+  has_many :wall_posts, foreign_key: "author_id", class_name: "WallPost", dependent: :destroy
+  has_many :wall_mentions, foreign_key: "mention_id", class_name: "WallPost", dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :walls,  dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   
   #validates_email_format_of :email, :message => "needs to be a valid email address."
@@ -27,7 +28,7 @@ class User < ApplicationRecord
       hash[:lastname] = person["name"]["last"]
       hash[:email] = person["email"]
       hash[:password] = person["login"]["password"]
-      hash[:image_url] = person["picture"]["large"]
+      hash[:remote_avatar_url] = person["picture"]["large"]
       User.create! hash
     end
   end
@@ -41,7 +42,7 @@ class User < ApplicationRecord
       hash[:lastname] = person["name"]["last"]
       hash[:email] = person["email"]
       hash[:password] = person["login"]["password"]
-      hash[:image_url] = person["picture"]["large"]
+      hash[:remote_avatar_url] = person["picture"]["large"]
       User.create! hash
     end
   end
@@ -66,5 +67,9 @@ class User < ApplicationRecord
   def fullname
     fullname = firstname.titleize + " " + lastname.titleize
     fullname
+  end
+
+  def likes_toggle!(item)
+    likes.where(item: item).first ? likes.where(item: item).first.destroy : likes.create(item: item)
   end
 end

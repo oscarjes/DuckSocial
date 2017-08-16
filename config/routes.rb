@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:new, :create, :destroy]
   resources :messages
   resources :wall_posts
+  resources :comments
 
   post "logout" => "sessions#destroy"
   get "users" => "users#index"

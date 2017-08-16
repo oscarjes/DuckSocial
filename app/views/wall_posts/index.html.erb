@@ -62,6 +62,26 @@
             </div>
           </div>
 
+          <div class="card">
+              <div class="card-content" id="wallpost">
+            <% wallpost.comments.each do |comment| %>
+            
+              
+                <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-24x24">
+                        <img src="<%= comment.user.avatar %>" alt="Image" style="border-radius: 50%;">
+                      </figure>
+                    </div>
+                  <div class="media-content">
+                      <%= comment.body %>
+                  </div>
+                </div>
+              
+            <% end %>
+            </div>
+            </div>
+
             <div class="card">
                 <div class="card-content" id="wallpost">
                   <div class="media">
@@ -72,9 +92,10 @@
                     </div>
                   
                   <div class="media-content">
-                  <%= form_for @wallpost do |f| %>
+                  <%= form_for @comment do |f| %>
                     <div class="field">
                       <div class="control">
+                        <%= f.hidden_field :wall_post_id, value: wallpost.id %>
                         <%= f.text_area :body, class: "textarea", rows: "1"%>
                       </div>
                     </div>
@@ -84,10 +105,11 @@
                         </button>
                       </div>
                     </div>
-                  </div>
+                </div>
                   <% end %>
-                  </div>
-                  </div>
+            </div>
+
+                </div>
               </div>
             <% end %>
           </div>

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :wall_mentions, foreign_key: "mention_id", class_name: "WallPost", dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :walls,  dependent: :destroy
+  has_many :comments, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   
   #validates_email_format_of :email, :message => "needs to be a valid email address."

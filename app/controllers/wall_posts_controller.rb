@@ -2,7 +2,12 @@ class WallPostsController < ApplicationController
 
   def create
     wallpost = current_user.wall_posts.create(wall_post_params)
-    if wallpost.save
+    if params[:wall_post][:mention_id].present?
+      wallpost.save
+      WallPostMailer.new_post(wallpost).deliver_now
+      flash[:success] = "Posted!"
+      redirect_back fallback_location: newsfeed_path
+    elsif wallpost.save
       flash[:success] = "Posted!"
       redirect_back fallback_location: newsfeed_path
     else

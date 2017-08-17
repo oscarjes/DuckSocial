@@ -2,94 +2,10 @@
   <div class="column">
   </div>
     <div class="column is-half">
-      
-      <div class="card" style="margin-top: 25px;">
-
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-96x96">
-                <img src="<%= @user.avatar %>" alt="Image" style="border-radius: 50%;">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4"><%= @user.fullname %></p>
-              <p class="subtitle is-6"><%= @user.email %></p>
-              <p class="subtitle is-6">Number of Friends added: <%= @user.friends.count %><br>
-              Added as a Friend by: <%= Friendship.friended_by_count(@user) %></p>
-            </div>
-          </div> 
-        </div>
-
-      </div>
-
-      <div class="card" style="margin-top: 25px;">
-
-          <div class="card-content" id="wallpost">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="<%= current_user.avatar %>" alt="Image" style="border-radius: 50%;">
-                </figure>
-              </div>
-            <div class="media-content">
-            <%= form_for @wallpost do |f| %>
-              <div class="field">
-                <div class="control">
-                  <%= f.text_area :body, class: "textarea " %>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary">Post
-                  </button>
-                </div>
-              </div>
-             </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-
-        <% @wallposts.each do |wallpost| %>
-        <div class="card" style="margin-top: 25px;">
-          <div class="card-content">
-           
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="<%= wallpost.author.avatar %>" alt="Image" style="border-radius: 50%;">
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="subtitle is-6"><%= wallpost.body %></p>
-                <p class="subtitle is-6" style="font-style: italic">Posted by: <%= link_to wallpost.author.fullname, wall_path(id: wallpost.author.id) %> <%= time_ago_in_words(wallpost.created_at) %> ago</p>
-              </div>
-            </div> 
-            </div>
-            <div class="card-footer">
-              <div class="level">
-                <div class="level-left">
-                  <div class="level-item">
-                    <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(wallpost_id: wallpost.id), class: "button is-white #{"is-liked" if current_user.likes.where(item: wallpost.id).first}", method: "post" %>
-                  </div>
-                  <div class="level-item">
-                    <%= link_to fa_icon("comments", text: "Comment"), "/changeme", class: "button is-white" %>
-                  </div>
-                </div>
-              </div>
-            </div>
-         </div>
-       
-      <% end %>
-
-        
-
-
-        
-      </div>
-
+      <%= render 'walls/profile_header.html.erb', user: @user %>
+      <%= render 'wall_posts/wall_post_self_form', wallpost: @wallpost %>
+      <%= render @wallposts %>
+    </div>
   <div class="column">
   </div>
 </div>

@@ -1,0 +1,27 @@
+<div class="card-content">
+           
+  <div class="media">
+    <div class="media-left">
+      <figure class="image is-48x48">
+        <img src="<%= wall_post.author.avatar %>" alt="Image" style="border-radius: 50%;">
+      </figure>
+    </div>
+    <div class="media-content">
+      <p class="subtitle is-6"><%= wall_post.body %></p>
+      <p style="font-style: italic; font-size: small">Posted by: <%= link_to wall_post.author.fullname, wall_path(id: wall_post.author.id) %> <%= time_ago_in_words(wall_post.created_at) %> ago</p>
+    </div>
+  </div> 
+  </div>
+  <div class="card-footer">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(wall_post_id: wall_post.id), class: "button is-white #{"is-liked" if current_user.likes.where(item: wall_post.id).first}", method: "post" %>
+        </div>
+        <div class="level-item">
+          <%= link_to fa_icon("comments", text: "#{wall_post.display_comments_count}"), "#", class: "button is-white #{"is-liked" if wall_post.comments.count > 0} comment-toggle"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

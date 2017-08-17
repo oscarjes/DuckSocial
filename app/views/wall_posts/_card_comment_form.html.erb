@@ -1,0 +1,29 @@
+<div class="card comment-form <%= 'hidden' if wall_post.comments.empty? %>">
+  <div class="card-content" id="wall_post">
+    
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-24x24">
+          <img src="<%= current_user.avatar %>" alt="Image" style="border-radius: 50%;">
+        </figure>
+      </div>
+
+    <div class="media-content">
+      <%= form_for comment do |f| %>
+        <div class="field">
+          <div class="control">
+            <%= f.hidden_field :wall_post_id, value: wall_post.id %>
+            <%= f.text_area :body, class: "textarea", rows: "1"%>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary">Post
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

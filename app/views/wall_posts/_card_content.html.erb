@@ -7,6 +7,9 @@
       </figure>
     </div>
     <div class="media-content">
+      <% if wall_post.image.present? %>
+        <%= image_tag wall_post.image, style: "margin-bottom: 10px;"%>
+      <% end %>
       <p class="subtitle is-6"><%= wall_post.body %></p>
       <p style="font-style: italic; font-size: small">Posted by: <%= link_to wall_post.author.fullname, wall_path(id: wall_post.author.id) %> <%= time_ago_in_words(wall_post.created_at) %> ago</p>
     </div>

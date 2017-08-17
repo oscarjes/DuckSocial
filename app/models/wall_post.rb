@@ -4,6 +4,7 @@ class WallPost < ApplicationRecord
   validates :body, presence: true
   has_many :likes, as: :item
   has_many :comments
+  mount_uploader :image, ImageUploader
 
   def display_comments_count
     if comments.count == 0

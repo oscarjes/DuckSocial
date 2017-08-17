@@ -12,7 +12,7 @@ class WallPostsController < ApplicationController
   end
 
   def wall_post_params
-    params.require(:wall_post).permit(:body, :mention_id)
+    params.require(:wall_post).permit(:body, :mention_id, :image)
   end
 
   def index

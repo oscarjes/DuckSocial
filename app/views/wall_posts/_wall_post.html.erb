@@ -1,5 +1,5 @@
 <div class="wall_post-content">
-  <div class="card" style="margin-top: 25px;">
+  <div class="card" style="margin-top: 25px;" id="<%= dom_id wall_post %>">
     <%= render 'wall_posts/card_content', wall_post: wall_post %>
     <%= render 'wall_posts/card_comments', wall_post: wall_post %>
     <%= render 'wall_posts/card_comment_form', wall_post: wall_post, comment: Comment.new %>

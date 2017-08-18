@@ -1,0 +1,5 @@
+<% if @item.class == WallPost %>
+  $("#<%= dom_id @item %>").find(".js-like-button").toggleClass("is-liked");
+<% else %>
+  $("#<%= dom_id @item %>").toggleClass("is-liked");
+<% end %>

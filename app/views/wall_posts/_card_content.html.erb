@@ -19,7 +19,9 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(wall_post_id: wall_post.id), class: "button is-white #{"is-liked" if current_user.likes.where(item: wall_post.id).first}", method: "post" %>
+          <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(wall_post_id: wall_post.id), 
+              class: "button is-white js-like-button #{"is-liked" if current_user.likes.where(item: wall_post.id).first}", 
+              method: "post", remote: true %>
         </div>
         <div class="level-item">
           <%= link_to fa_icon("comments", text: "#{wall_post.display_comments_count}"), "#", class: "button is-white #{"is-liked" if wall_post.comments.count > 0} comment-toggle"%>

@@ -38,6 +38,7 @@ gem "validate_url"
 
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws'
+gem 'slack-notifier'
 
 gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
 

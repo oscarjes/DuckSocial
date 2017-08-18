@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:new, :create, :destroy]
   resources :messages
   resources :wall_posts
+  resources :comments
 
   post "logout" => "sessions#destroy"
   get "users" => "users#index"
@@ -16,4 +17,7 @@ Rails.application.routes.draw do
   get 'sent' => 'messages#sent'
   get 'friends/new' => "users#find"
   get 'profile' => 'users#show'
+  get 'newsfeed' => 'wall_posts#index'
+  post "toggle_like" => "likes#toggle"
+  get 'walls/:id' => 'walls#show', as: 'wall'
 end

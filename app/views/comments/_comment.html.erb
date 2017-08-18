@@ -1,0 +1,18 @@
+
+                
+                  <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-24x24">
+                          <img src="<%= comment.user.avatar %>" alt="Image" style="border-radius: 50%;">
+                        </figure>
+
+                      </div>
+                    <div class="media-content">
+                        <%= comment.body %>
+                                                <div class="level-left">
+                          <div class="level-item">
+                            <%= link_to fa_icon("thumbs-up", text: ""), toggle_like_path(comment_id: comment.id), class: "button is-white #{"is-liked" if current_user.likes.where(item: comment).first}", method: "post" %>
+                          </div>
+                        </div>
+                    </div>
+                  </div>

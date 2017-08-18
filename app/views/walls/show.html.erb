@@ -1,0 +1,11 @@
+<div class="columns">
+  <div class="column">
+  </div>
+    <div class="column is-half">
+      <%= render 'profile_header.html.erb', user: @user %>
+      <%= render 'wall_post_mention_form', wallpost: @wallpost, user: @user%>
+      <%= render @wallposts %>
+    </div>
+  <div class="column">
+  </div>
+</div>

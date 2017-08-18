@@ -3,7 +3,7 @@
     <div class="card" style="margin-top: 25px;">
       <header class="card-header">
         <p class="card-header-title">
-          Change your Profile Picture
+          Change your Avatar
         </p>
       </header>
       <div class="card-content">
@@ -11,17 +11,17 @@
         <div class="content">
           <div class="media-content">
             <figure class="image is-96x96">
-              <img src="<%= @user.image_url %>" alt="Image" style="border-radius: 50%;">
+              <img src="<%= @user.avatar %>" alt="Image" style="border-radius: 50%;">
             </figure>
           </div>
           <div class="field">
               <div class="control">
-              <%= f.text_field :image_url, placeholder: "Image Url", class: "input"%>
+              <%= f.file_field :avatar, class: "input"%>
               </div>
           </div>
             <div class="field">
               <div class="control">
-                <%= f.submit "Change picture", class: "button is-info"%>
+                <%= f.submit "Upload an avatar", class: "button is-info"%>
               </div>
           </div>
         </div>

@@ -30,7 +30,7 @@
           </div>
             <%= form_for current_user.friendships.build(friend: user) do |f| %>
               <%= f.hidden_field :friend_id %>
-              <%= button_to "Add Friend", friendships_path, class: "button is-primary is-pulled-right" %>
+              <%= button_tag "Add Friend", class: "button is-primary is-pulled-right" %>
             <% end %>
           </div>
          </div>

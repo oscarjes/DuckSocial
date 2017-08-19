@@ -1,4 +1,5 @@
 class WallPostsController < ApplicationController
+  before_action :require_login
 
   def create
     wallpost = current_user.wall_posts.create(wall_post_params)

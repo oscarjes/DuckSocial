@@ -20,21 +20,7 @@ class User < ApplicationRecord
     avatar.url || image_url.presence || "http://lorempixel.com/128/128/people/Fake-User/"
   end
 
-  def self.generate_female_users(n = 25, gender = "female")
-    url = "https://randomuser.me/api?results=#{n}&gender=#{gender}"
-    body = HTTP.get(url).parse
-    body["results"].each do |person|
-      hash = {}
-      hash[:firstname] = person["name"]["first"]
-      hash[:lastname] = person["name"]["last"]
-      hash[:email] = person["email"]
-      hash[:password] = person["login"]["password"]
-      hash[:remote_avatar_url] = person["picture"]["large"]
-      User.create! hash
-    end
-  end
-
-  def self.generate_male_users(n = 25, gender = "male")
+  def self.generate_users(n = 25, gender = "female")
     url = "https://randomuser.me/api?results=#{n}&gender=#{gender}"
     body = HTTP.get(url).parse
     body["results"].each do |person|

@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.generate_female_users(25)
-User.generate_male_users(25)
+User.generate_users(25, "female")
+User.generate_users(25, "male")

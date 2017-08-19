@@ -17,10 +17,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :image_url, :avatar)
-  end
-
   def index
     @users = User.where.not(id: current_user.id)
     
@@ -74,6 +70,13 @@ class UsersController < ApplicationController
       flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}"
       redirect_to profile_path
     end
+  end
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :image_url, :avatar)
   end
 
 end

@@ -2,7 +2,7 @@
 
 Social networking app built using Rails and Bulma.
 
-Heroku: https://minimalnet.herokuapp.com/
+Heroku: https://ducksocial.herokuapp.com/
 
 ![Video Walkthrough](ducksocial.gif)
 

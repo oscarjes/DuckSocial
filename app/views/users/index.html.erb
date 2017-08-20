@@ -1,5 +1,6 @@
 <div class="columns">
 <div class="column">
+  <%= render 'layouts/menu' %>
 </div>
 <div class="column is-half">
 
@@ -26,7 +27,9 @@
               </figure>
             </div>
             <div class="media-content is-pulled-left">
-              <p class="title is-4"><%= user.fullname %></p>
+              <p class="title is-4">
+                <%= link_to user.fullname, wall_path(id: user.id)%>
+              </p>
               <p class="subtitle is-6" style="margin-top: 2px;">Number of Friends: <%= user.friends.count%><br>
               Friended by: <%= Friendship.friended_by_count(user) %></p>
           </div>

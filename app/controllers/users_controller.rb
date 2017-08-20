@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to root_path
+      redirect_to newsfeed_path
     else
       flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}."
       render "new"
@@ -49,26 +49,26 @@ class UsersController < ApplicationController
     if params[:user][:image_url]
       if @user.update(image_url: params[:user][:image_url])
       flash[:success] = "Profile picture changed successfully"
-      redirect_to profile_path
+      redirect_to settings_path
       else
         flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}."
-        redirect_to profile_path
+        redirect_to settings_path
       end
     elsif params[:user][:old_password]
       if @user.authenticate(params[:user][:old_password])
         @user.update(password: params[:user][:password], password_confirmation: params[:user][:password_confirmation])
         flash[:success] = "Password changed successfully"
-        redirect_to profile_path
+        redirect_to settings_path
       else
         flash[:error] = "Incorrect password."
-        redirect_to profile_path
+        redirect_to settings_path
       end
     elsif @user.update user_params
       flash[:success] = "Profile updated successfully."
-      redirect_to profile_path
+      redirect_to settings_path
     else
       flash[:error] = "Something went wrong: #{@user.errors.full_messages.to_sentence}"
-      redirect_to profile_path
+      redirect_to settings_path
     end
   end
 

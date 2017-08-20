@@ -1,5 +1,8 @@
 <div class="columns">
-<div class="column is-half" style="margin-left: auto; margin-right: auto">
+<div class="column">
+  <%= render 'layouts/menu' %>
+</div>
+<div class="column is-half">
 
     <%= form_tag friends_new_path, method: "get" do %>
   <div class="field has-addons" style="margin-right: 20px; margin-top: 25px; margin-bottom: 20px;">
@@ -37,4 +40,6 @@
         <% end %>
       <% end %>
    </div>
+   <div class="column">
+  </div>
 </div>

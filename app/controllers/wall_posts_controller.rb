@@ -19,15 +19,17 @@ class WallPostsController < ApplicationController
     end
   end
 
-  def wall_post_params
-    params.require(:wall_post).permit(:body, :mention_id, :image)
-  end
-
   def index
     @user = current_user
-    wallposts_combo = current_user.wall_posts.all + current_user.wall_mentions.all
-    @wallposts = wallposts_combo.sort_by(&:created_at).reverse
+    @wallposts = WallPost.all.sort_by(&:created_at).reverse
     @wallpost = WallPost.new
     @comment = Comment.new
   end
+
+  private
+
+  def wall_post_params
+    params.require(:wall_post).permit(:body, :mention_id, :image)
+  end
+  
 end

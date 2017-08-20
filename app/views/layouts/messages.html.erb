@@ -1,6 +1,7 @@
 <% content_for(:content) do %>
   <div class="columns">
     <div class="column">
+      <%= render 'layouts/menu' %>
     </div>
     <div class="column is-half" style="margin-top: 25px;">
       <div class="tabs is-centered is-boxed is-medium">
@@ -25,20 +26,11 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div class="column">
-    </div>
-  </div>
-
- <div class="columns">
-    <div class="column">
-    </div>
-    <div class="column is-half">
       <%= yield %>
     </div>
-  <div class="column">
+    <div class="column">
+    </div>
   </div>
-</div>
 <% end %>
 
 <%= render file: "layouts/application" %>

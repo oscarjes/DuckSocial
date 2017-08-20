@@ -56,7 +56,13 @@ class User < ApplicationRecord
     fullname
   end
 
+  def self.mentioned_name(wall_post)
+    user = User.find(wall_post.mention_id)
+    user.fullname
+  end
+
   def likes_toggle!(item)
     likes.where(item: item).first ? likes.where(item: item).first.destroy : likes.create(item: item)
   end
+
 end

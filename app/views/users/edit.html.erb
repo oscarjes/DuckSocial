@@ -1,36 +1,9 @@
 <div class="columns">
-  <div class="column is-one-third">
-    <div class="card" style="margin-top: 25px;">
-      <header class="card-header">
-        <p class="card-header-title">
-          Change your Avatar
-        </p>
-      </header>
-      <div class="card-content">
-      <%= form_for @user do |f| %>
-        <div class="content">
-          <div class="media-content">
-            <figure class="image is-96x96">
-              <img src="<%= @user.avatar %>" alt="Image" style="border-radius: 50%;">
-            </figure>
-          </div>
-          <div class="field">
-              <div class="control">
-              <%= f.file_field :avatar, class: "input"%>
-              </div>
-          </div>
-            <div class="field">
-              <div class="control">
-                <%= f.submit "Upload an avatar", class: "button is-info"%>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
+  <div class="column">
+    <%= render 'layouts/menu' %>
   </div>
-  <div class="column is-one-third">
-    <div class="card" style="margin-top: 25px;">
+  <div class="column is-half">
+   <div class="card" style="margin-top: 25px;">
       <header class="card-header">
         <p class="card-header-title">
           Edit Your Personal Information
@@ -63,8 +36,6 @@
       </div>
     </div>
     <% end %>
-  </div>
-  <div class="column is-one-third">
     <div class="card" style="margin-top: 25px;">
       <header class="card-header">
         <p class="card-header-title">
@@ -97,6 +68,36 @@
             <div class="field">
               <div class="control">
                 <%= f.submit "Change Password", class: "button is-info"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="column">
+  <div class="card" style="margin-top: 25px;">
+      <header class="card-header">
+        <p class="card-header-title">
+          Change your Avatar
+        </p>
+      </header>
+      <div class="card-content">
+      <%= form_for @user do |f| %>
+        <div class="content">
+          <div class="media-content">
+            <figure class="image is-96x96">
+              <img src="<%= @user.avatar %>" alt="Image" style="border-radius: 50%;">
+            </figure>
+          </div>
+          <div class="field">
+              <div class="control">
+              <%= f.file_field :image, class: "file" %>
+              </div>
+          </div>
+            <div class="field">
+              <div class="control">
+                <%= f.submit "Upload an avatar", class: "button is-info"%>
               </div>
           </div>
         </div>

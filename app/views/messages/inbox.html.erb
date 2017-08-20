@@ -1,25 +1,25 @@
 <div class="card">
   <div class="card-content">
 
-<% @messages.each do |message| %>
+    <% @messages.each do |message| %>
 
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="<%= message.sender.avatar %>" style="border-radius: 50%;">
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= message.sender.fullname %></strong> <small><%= time_ago_in_words(message.created_at) %> ago</small>
-          <br>
-          <%= message.body %>
-      </div>
-    </div>
-  </article>
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="<%= message.sender.avatar %>" style="border-radius: 50%;">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= message.sender.fullname %></strong> <small><%= time_ago_in_words(message.created_at) %> ago</small>
+              <br>
+              <%= message.body %>
+          </div>
+        </div>
+      </article>
+      
+    <% end %>
 
-<% end %>
-
-</div>
+  </div>
 </div>

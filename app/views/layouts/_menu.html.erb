@@ -1,0 +1,26 @@
+<aside class="menu" style="margin-top: 25px;">
+  <p class="menu-label">
+    <%= current_user.fullname %>
+  </p>
+  <ul class="menu-list">
+    
+    <li><%= link_to icon("list-alt", "Newsfeed"), newsfeed_path, class: "#{'is-active' if current_page?(newsfeed_path)}" %></li>
+    <li><%= link_to icon("user", "Profile"), profile_path, class: "#{'is-active' if current_page?(profile_path)}"  %></li>
+    <li><%= link_to icon("cog", "Settings"), settings_path, class: "#{'is-active' if current_page?(settings_path)}"  %></li>
+  </ul>
+  <p class="menu-label">
+    Messaging
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to icon("envelope", "Inbox"), inbox_path, class: "#{'is-active' if current_page?(inbox_path)}"  %></li>
+    <li><%= link_to icon("pencil", "New"), messages_new_path, class: "#{'is-active' if current_page?(messages_new_path)}"  %></li>
+    <li><%= link_to icon("send", "Sent"), sent_path, class: "#{'is-active' if current_page?(sent_path)}"  %></li>
+  </ul>
+  <p class="menu-label">
+    Friends
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to icon("users", "Friend List"), users_path, class: "#{'is-active' if current_page?(users_path)}"  %></li>
+    <li><%= link_to icon("search", "Find Friends"), friends_new_path, class: "#{'is-active' if current_page?(friends_new_path)}"  %></li>
+  </ul>
+</aside>

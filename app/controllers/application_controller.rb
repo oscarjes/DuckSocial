@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def skip_if_logged_in
     if current_user
-      redirect_to profile_path
+      redirect_to newsfeed_path
     end
   end
 end

@@ -22,9 +22,9 @@ $(document).on("turbolinks:load", function(){
     $("a#only-you").on('click', myClickYou);
 
     var commentClick = function(event){
-      event.preventDefault();      
-      $(event.target).parents("div.wall_post-content").children("div.comment-display").toggleClass("hidden");
-      $(event.target).parents("div.wall_post-content").children("div.comment-form").toggleClass("hidden");
+      event.preventDefault();
+      $(event.target).parents("div.wall_post-content").find("div.comment-display").toggleClass("hidden");
+      $(event.target).parents("div.wall_post-content").find("div.comment-form").toggleClass("hidden");
     };
   
     $("a.comment-toggle").on('click', commentClick);

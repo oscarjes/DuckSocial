@@ -15,4 +15,5 @@ class WallPost < ApplicationRecord
       "#{comments.count} Comments"
     end
   end
+
 end

@@ -70,4 +70,8 @@ class User < ApplicationRecord
     User.offset(random_index).first
   end
 
+  def posts_on_wall(user)
+    WallPost.where(mention_id: user.id).or(WallPost.where(author: user))
+  end
+
 end

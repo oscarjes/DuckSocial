@@ -13,13 +13,13 @@ function setupInfiniteScroll(e) {
 
   /* validate if the pagination URL has query params */
   if (paginationUrl.indexOf('?') != -1) {
-    baseEndpoint = paginationUrl + "&page=";
+    baseEndpoint = paginationUrl + "&page="
   } else {
     baseEndpoint = paginationUrl + "?page="
   }
 
   /* initialize pagination */
-  $paginationElem.hide()
+  // $paginationElem.hide()
   let isPaginating = false
 
   /* listen to scrolling */
@@ -27,17 +27,20 @@ function setupInfiniteScroll(e) {
     console.log("scrolling", "current page: ", currentPage, "total pages: ", pagesAmount);
     if (!isPaginating && currentPage < pagesAmount && $window.scrollTop() > $document.height() - $window.height() - THRESHOLD) {
       isPaginating = true;
+      $('#pagination-loading').removeClass('hidden');
       currentPage++;
       $paginationElem.show();
       $.ajax({
         url: baseEndpoint + currentPage
       }).done(function (result) {
-        $('.column.is-half').append(result);
+        $('#pagination-loading').addClass('hidden');
+        $('#wall-posts').append(result);
         isPaginating = false;
       });
     }
     if (currentPage >= pagesAmount) {
-      $paginationElem.hide();
+      $('#pagination-loading').addClass('hidden');
+      //$paginationElem.hide();
     }
   }, 100));
 }

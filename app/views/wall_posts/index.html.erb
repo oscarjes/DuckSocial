@@ -3,9 +3,11 @@
     <%= render 'layouts/menu' %>
   </div>  
   <div class="column is-half">
-    <%= render 'wall_post_self_form', wallpost: @wallpost %>
-    <%= render @wallposts %>
-    <div class="pagination" style="margin-top: 25px;" data-pagination-endpoint="<%= paging_wall_posts_path %>" data-pagination-pages="<%= @wallposts.total_pages %>">
+    <div id="wall-posts">
+      <%= render 'wall_post_self_form', wallpost: @wallpost %>
+      <%= render @wallposts %>
+    </div>
+    <div class="pagination hidden" id="pagination-loading" style="margin-top: 25px;" data-pagination-endpoint="<%= paging_wall_posts_path(source: "newsfeed") %>" data-pagination-pages="<%= @wallposts.total_pages %>">
       <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
     </div>
   </div>

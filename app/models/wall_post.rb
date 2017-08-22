@@ -20,7 +20,7 @@ class WallPost < ApplicationRecord
     user ||= User.last
     n.times do 
       wall_post = WallPost.create(body: Faker::HowIMetYourMother.quote,
-        mention_id: user.id,
+        mention_id: 51,
         author: User.random_user
       )
       rand(3).times do

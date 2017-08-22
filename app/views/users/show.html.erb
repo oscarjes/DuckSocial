@@ -5,7 +5,12 @@
     <div class="column is-half">
       <%= render 'walls/profile_header.html.erb', user: @user %>
       <%= render 'wall_posts/wall_post_self_form', wallpost: @wallpost %>
-      <%= render @wallposts %>
+      <div id="wall-posts">
+        <%= render @wallposts %>
+      </div>
+      <div class="pagination hidden" id="pagination-loading" style="margin-top: 25px;" data-pagination-endpoint="<%= paging_wall_posts_path(source: "profile") %>" data-pagination-pages="<%= @wallposts.total_pages %>">
+       <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
+     </div>
     </div>
   <div class="column">
   </div>

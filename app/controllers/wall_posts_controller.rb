@@ -22,14 +22,22 @@ class WallPostsController < ApplicationController
   def index
     @user = current_user
     #@wallposts = WallPost.all.sort_by(&:created_at).reverse
-    @wallposts = WallPost.order("updated_at DESC").page(1).per(10)
+    @wallposts = WallPost.order("updated_at DESC").page(1).per(5)
     @wallpost = WallPost.new
     @comment = Comment.new
   end
 
   def paging
-    params[:per] ||= 10
-    @wallposts = WallPost.order("updated_at DESC").page(params[:page]).per(params[:per])
+    params[:per] ||= 5
+
+    if params[:source] == "newsfeed"
+      @wallposts = WallPost.order("updated_at DESC").page(params[:page]).per(params[:per])
+    elsif params[:source] == "profile"
+      @wallposts = current_user.posts_on_wall(current_user).order("updated_at DESC").page(params[:page]).per(params[:per])
+    else params[:source] == "wall"
+      @user = User.find(params[:id])
+      @wallposts = @user.posts_on_wall(@user).order("updated_at DESC").page(params[:page]).per(params[:per])
+    end
 
     render partial: 'wall_post', collection: @wallposts, layout: false
   end

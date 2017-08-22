@@ -39,8 +39,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    wallposts_combo = current_user.wall_posts.all + current_user.wall_mentions.all
-    @wallposts = wallposts_combo.sort_by(&:created_at).reverse
+    #wallposts_combo = current_user.wall_posts.all + current_user.wall_mentions.all
+    @wallposts = @user.posts_on_wall(@user).order("updated_at DESC").page(1).per(5)
     @wallpost = WallPost.new
   end
 

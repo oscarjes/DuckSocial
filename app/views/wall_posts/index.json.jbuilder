@@ -1,0 +1,1 @@
+json.partial! 'wall_posts/wall_post', collection: @wallposts, as: :wallpost

@@ -25,6 +25,20 @@ class WallPostsController < ApplicationController
     @wallposts = WallPost.order("updated_at DESC").page(1).per(5)
     @wallpost = WallPost.new
     @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def show
+    @wallpost = WallPost.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def paging

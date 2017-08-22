@@ -40,6 +40,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws'
 gem 'slack-notifier'
 
+gem 'kaminari'
+gem 'faker'
+
 gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
 
 # Use Capistrano for deployment

@@ -65,4 +65,9 @@ class User < ApplicationRecord
     likes.where(item: item).first ? likes.where(item: item).first.destroy : likes.create(item: item)
   end
 
+  def self.random_user
+    random_index = rand(User.count)
+    User.offset(random_index).first
+  end
+
 end

@@ -21,9 +21,17 @@ class WallPostsController < ApplicationController
 
   def index
     @user = current_user
-    @wallposts = WallPost.all.sort_by(&:created_at).reverse
+    #@wallposts = WallPost.all.sort_by(&:created_at).reverse
+    @wallposts = WallPost.order("updated_at DESC").page(1).per(10)
     @wallpost = WallPost.new
     @comment = Comment.new
+  end
+
+  def paging
+    params[:per] ||= 10
+    @wallposts = WallPost.order("updated_at DESC").page(params[:page]).per(params[:per])
+
+    render partial: 'wall_post', collection: @wallposts, layout: false
   end
 
   private

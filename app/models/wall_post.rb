@@ -16,4 +16,19 @@ class WallPost < ApplicationRecord
     end
   end
 
+  def self.generate_posts(n = 5, user = nil)
+    user ||= User.last
+    n.times do 
+      wall_post = WallPost.create(body: Faker::HowIMetYourMother.quote,
+        mention_id: user.id,
+        author: User.random_user
+      )
+      rand(3).times do
+        wall_post.comments.create(
+          body: Faker::HowIMetYourMother.catch_phrase,
+          user: User.random_user
+        )
+      end      
+    end
+  end
 end

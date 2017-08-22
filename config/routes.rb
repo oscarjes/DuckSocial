@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :friendships, only: [:new, :create, :destroy]
   resources :messages
-  resources :wall_posts
+  resources :wall_posts do
+    get :paging, on: :collection
+  end
   resources :comments
 
   post "logout" => "sessions#destroy"

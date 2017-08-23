@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :users
+  resources :users  do
+    get :search, on: :collection, defaults: { format: 'json' }
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :friendships, only: [:new, :create, :destroy]
   resources :messages

@@ -74,4 +74,7 @@ class User < ApplicationRecord
     WallPost.where(mention_id: user.id).or(WallPost.where(author: user))
   end
 
+  def self.autocomplete_by_name(q)
+    User.where('firstname ILIKE ?', "%#{q}%")
+  end
 end

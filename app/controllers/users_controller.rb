@@ -72,6 +72,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    search = params[:q] || nil
+    users = User.autocomplete_by_name(search)
+    render json: users
+  end
+
 
   private
 

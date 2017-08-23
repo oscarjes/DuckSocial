@@ -8,5 +8,16 @@ $(document).on("turbolinks:load", function(){
   };
 
   $("a#password-toggle-icon").on('click', myClick);
+
+
+  var options = {
+    url: function(phrase) {
+      return "users/search?q=" + phrase + "&format=json";
+    },
+
+    getValue: "firstname"
+  };
+
+  $("#provider-remote").easyAutocomplete(options);
 });
 

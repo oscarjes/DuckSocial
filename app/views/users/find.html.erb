@@ -5,17 +5,15 @@
 <div class="column is-half">
 
     <%= form_tag friends_new_path, method: "get" do %>
-  <div class="field has-addons" style="margin-right: 20px; margin-top: 25px; margin-bottom: 20px;">
-    
-    <div class="control is-expanded">
-      <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find Someone"%>
-    </div>
-    <div class="control">
-    <%= button_tag "Search", class: "button is-primary"%>
-    </div>
-  </div>
-      <% end %>
-
+      <div class="field has-addons" style="margin-right: 20px; margin-top: 25px; margin-bottom: 20px;">
+        <div class="control is-expanded">
+          <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find Someone"%>
+        </div>
+        <div class="control">
+        <%= button_tag "Search", class: "button is-primary"%>
+        </div>
+      </div>
+    <% end %>
 
   <% @users.each do |user| %>
     <% unless current_user.is_friend?(user) %>

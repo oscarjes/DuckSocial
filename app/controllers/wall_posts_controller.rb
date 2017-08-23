@@ -19,7 +19,11 @@ class WallPostsController < ApplicationController
     end
 
     if params[:mentions].present?
-      wallpost.mentions.create(user_id: params[:mentions])
+      mentions = params[:mentions].split(',')
+      mentions.shift
+      mentions.each do |mention|
+        wallpost.mentions.create(user_id: mention)
+      end
     end
   end
 

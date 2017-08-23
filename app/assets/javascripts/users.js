@@ -22,8 +22,9 @@ $(document).on("turbolinks:load", function(){
             var name = $("#provider-remote").getSelectedItemData().firstname;
             var value = $("#provider-remote").getSelectedItemData().id;
 
-            $("#data-holder").val(value).trigger("change");
+           
             $("#data-holder-selected").append("<li>" + name + "</li>").trigger("change");
+            $("#data-holder").val($("#data-holder").val() + "," + value).trigger("change");
           }
         }
   };

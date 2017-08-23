@@ -23,8 +23,9 @@ $(document).on("turbolinks:load", function(){
             var value = $("#provider-remote").getSelectedItemData().id;
 
            
-            $("#data-holder-selected").append("<li>" + name + "</li>").trigger("change");
+            $("#data-holder-selected").append("<span class='tag is-light' style='margin-right: 5px;'>" + name + "</span>").trigger("change");
             $("#data-holder").val($("#data-holder").val() + "," + value).trigger("change");
+            $("#provider-remote").val("").trigger("change");
           }
         }
   };

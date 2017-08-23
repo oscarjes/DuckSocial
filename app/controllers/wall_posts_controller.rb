@@ -5,12 +5,12 @@ class WallPostsController < ApplicationController
     wallpost = current_user.wall_posts.create(wall_post_params)
     if params[:wall_post][:mention_id].present?
       wallpost.save
-      WallPostMailer.new_post(wallpost).deliver_now
-      NotifySlack.new.notify_new_wall_post(wallpost)
+      #WallPostMailer.new_post(wallpost).deliver_now
+      #NotifySlack.new.notify_new_wall_post(wallpost)
       flash[:success] = "Posted!"
       redirect_back fallback_location: newsfeed_path
     elsif wallpost.save
-      NotifySlack.new.notify_new_wall_post(wallpost)
+      #NotifySlack.new.notify_new_wall_post(wallpost)
       flash[:success] = "Posted!"
       redirect_back fallback_location: newsfeed_path
     else

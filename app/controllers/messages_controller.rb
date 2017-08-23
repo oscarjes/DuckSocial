@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   def create
     message = current_user.sent_messages.create(message_params)
     if message.save
-      MessageMailer.new_message(message).deliver_now
+      #MessageMailer.new_message(message).deliver_now
       flash[:success] = "Message sent."
       redirect_to sent_path
     else

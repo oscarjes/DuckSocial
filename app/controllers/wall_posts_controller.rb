@@ -17,6 +17,10 @@ class WallPostsController < ApplicationController
       flash[:error] = "Something went wrong. Please try again."
       redirect_to fallback_location: newsfeed_path
     end
+
+    if params[:mentions].present?
+      wallpost.mentions.create(user_id: params[:mentions])
+    end
   end
 
   def index

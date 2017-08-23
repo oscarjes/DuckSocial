@@ -15,7 +15,15 @@ $(document).on("turbolinks:load", function(){
       return "users/search?q=" + phrase + "&format=json";
     },
 
-    getValue: "firstname"
+    getValue: "firstname",
+
+    list: {
+          onChooseEvent: function() {
+            var value = $("#provider-remote").getSelectedItemData().id;
+      
+            $("#data-holder").val(value).trigger("change");
+          }
+        }
   };
 
   $("#provider-remote").easyAutocomplete(options);

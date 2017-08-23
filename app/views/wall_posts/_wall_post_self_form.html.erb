@@ -13,6 +13,15 @@
               <%= f.text_area :body, class: "textarea "%>
             </div>
           </div>
+
+            <div class="field">
+              <%= f.label :mentions, "Find users to mention:", class: "label" %>
+                <div class="control">
+                  <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find users...", id: "provider-remote" %>
+                  <%= hidden_field_tag "mentions", "", id: "data-holder" %>
+                </div>
+            </div>
+
           <div class="field">
           <%= f.label :image, "Upload an image", class: "label" %>
             <div class="control">

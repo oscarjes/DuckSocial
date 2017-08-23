@@ -18,16 +18,17 @@
       </div>
       <% if current_user %>
         <div class="navbar-item">
-          <%= form_tag friends_new_path, method: "get" do %>
+          <form onSubmit="">
             <div class="field has-addons">
               <div class="control">
-                <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find users...", id: "inactive-provider-remote" %>
+                <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find users...", id: "provider-remote-nav" %>
+                <%= hidden_field_tag :id, "", id: "data-holder-nav"%>
               </div>
               <div class="control">
                 <%= button_tag "Search", class: "button is-primary"%>
               </div>
             </div>
-          <% end %>
+          </form>
         </div>
 
       <div class="navbar-end">

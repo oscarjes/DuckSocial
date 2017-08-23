@@ -19,13 +19,33 @@ $(document).on("turbolinks:load", function(){
 
     list: {
           onChooseEvent: function() {
+            var name = $("#provider-remote").getSelectedItemData().firstname;
             var value = $("#provider-remote").getSelectedItemData().id;
-      
+
             $("#data-holder").val(value).trigger("change");
+            $("#data-holder-selected").append("<li>" + name + "</li>").trigger("change");
           }
         }
   };
 
   $("#provider-remote").easyAutocomplete(options);
-});
 
+  var optionsNav = {
+    url: function(phrase) {
+      return "users/search?q=" + phrase + "&format=json";
+    },
+
+    getValue: "firstname",
+
+    list: {
+          onChooseEvent: function() {
+            var value = $("#provider-remote").getSelectedItemData().id;
+
+            $("#data-holder-nav").val(value).trigger("change");
+            
+          }
+        }
+  };
+
+  $("#provider-remote-nav").easyAutocomplete(optionsNav);
+});

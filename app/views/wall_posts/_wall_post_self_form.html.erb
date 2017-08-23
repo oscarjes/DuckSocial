@@ -15,7 +15,10 @@
           </div>
 
             <div class="field">
-              <%= f.label :mentions, "Find users to mention:", class: "label" %>
+              <%= f.label :mentions, "Find users to mention:", class: "label", id: "" %>
+              <ul>
+                <div id="data-holder-selected">
+              </ul>
                 <div class="control">
                   <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find users...", id: "provider-remote" %>
                   <%= hidden_field_tag "mentions", "", id: "data-holder" %>

@@ -4,6 +4,7 @@ class WallPost < ApplicationRecord
   validates :body, presence: true
   has_many :likes, as: :item
   has_many :comments
+  has_many :mentions
   mount_uploader :image, ImageUploader
 
   def display_comments_count
@@ -28,7 +29,12 @@ class WallPost < ApplicationRecord
           body: Faker::HowIMetYourMother.catch_phrase,
           user: User.random_user
         )
-      end      
+      end
+      rand(5).times do
+        wall_post.mentions.create(
+          user: User.random_user
+        )
+      end
     end
   end
 end

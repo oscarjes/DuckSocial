@@ -16,6 +16,10 @@
             on <%= link_to User.mentioned_name(wall_post), wall_path(id: wall_post.mention_id) %>'s Wall
           <% end %>
         <%= time_ago_in_words(wall_post.created_at) %> ago</p>
+        <p style="font-style: italic; font-size: small"> 
+        <% if wall_post.mentions.any? %>
+          <%= display_mentions(wall_post) %>
+        <% end %></p>
     </div>
   </div> 
 </div>

@@ -1,0 +1,5 @@
+<div class="comment-likes-sentence">
+  <small style="font-style: italic;">
+    <%= comment.likes.map {|l| l.user.fullname}.to_sentence %>
+  </small>
+</div>

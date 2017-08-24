@@ -3,7 +3,6 @@
   <head>
     <title>DuckSocial</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,6 +16,7 @@
           </a>
       </div>
       <% if current_user %>
+      <!--
         <div class="navbar-item">
           <form onSubmit="">
             <div class="field has-addons">
@@ -30,7 +30,7 @@
             </div>
           </form>
         </div>
-
+      -->
       <div class="navbar-end">
         <%= link_to icon("sign-out", "Sign Out"), logout_path, class: "navbar-item", method: :post  %>
       </div>

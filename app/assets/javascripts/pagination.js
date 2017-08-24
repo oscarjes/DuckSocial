@@ -24,7 +24,7 @@ function setupInfiniteScroll(e) {
 
   /* listen to scrolling */
   $window.on('scroll', debounce(function () {
-    console.log("scrolling", "current page: ", currentPage, "total pages: ", pagesAmount);
+    //console.log("scrolling", "current page: ", currentPage, "total pages: ", pagesAmount);
     if (!isPaginating && currentPage < pagesAmount && $window.scrollTop() > $document.height() - $window.height() - THRESHOLD) {
       isPaginating = true;
       $('#pagination-loading').removeClass('hidden');

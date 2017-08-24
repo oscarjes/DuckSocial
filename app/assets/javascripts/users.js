@@ -12,7 +12,7 @@ $(document).on("turbolinks:load", function(){
 
   var options = {
     url: function(phrase) {
-      return "users/search?q=" + phrase + "&format=json";
+      return "/users/search?q=" + phrase + "&format=json";
     },
 
     getValue: "firstname",

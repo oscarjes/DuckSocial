@@ -17,6 +17,17 @@
               <%= f.hidden_field :mention_id, value: user.id %>
             </div>
           </div>
+
+          <div class="field">
+            <%= f.label :mentions, "Find users to mention:", class: "label", id: "" %>
+              <div id="data-holder-selected" style="margin-bottom: 10px;">
+              </div>
+              <div class="control">
+                <%= text_field_tag :q, params[:q], class: "input", placeholder: "Find users...", id: "provider-remote" %>
+                <%= hidden_field_tag "mentions", "", id: "data-holder" %>
+              </div>
+          </div>
+
           <div class="field">
           <%= f.label :image, "Upload an image", class: "label" %>
             <div class="control">

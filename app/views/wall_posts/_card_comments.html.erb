@@ -1,11 +1,13 @@
 <div class="card comment-display <%= 'hidden' if wall_post.comments.empty? %>">
   <div class="card-content" id="wall_post">
-    <% if wall_post.comments.empty? %>
-      No comments yet. Be the first to comment!
-    <% else %>
       <div class="comments">
-        <%= render wall_post.comments %>
+        <% if wall_post.comments.empty? %>
+          <div class="no-comments">
+            No comments yet. Be the first to comment!
+          </div>
+        <% else %>
+          <%= render wall_post.comments %>
+        <% end %>
       </div>
-    <% end %>
   </div>
 </div>

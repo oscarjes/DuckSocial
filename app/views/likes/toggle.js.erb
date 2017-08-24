@@ -3,10 +3,5 @@
   $("#<%= dom_id @item %>").find(".likes-sentence").replaceWith("<%= j render 'wall_posts/likes_sentence', wall_post: @item %>");
 <% else %>
   $("#<%= dom_id @item %>").toggleClass("is-liked");
+  $("#<%= dom_id @item %>").siblings(".comment-likes-sentence").replaceWith("<%= j render 'comments/comment_likes_sentence', comment: @item %>");
 <% end %>
-
-
-
-
-
-

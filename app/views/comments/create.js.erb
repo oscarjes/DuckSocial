@@ -1,3 +1,4 @@
 $post = $("#<%= dom_id @comment.wall_post %>");
+$post.find("div.no-comments").addClass("hidden");
 $post.find(".comments").append("<%= j render @comment %>");
-$post.find("input.js-new-comment").val("");
+$post.find("textarea.js-new-comment").val("");

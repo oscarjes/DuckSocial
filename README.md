@@ -4,7 +4,7 @@ Social networking app built using Rails and Bulma.
 
 Heroku: https://ducksocial.herokuapp.com/
 
-![Video Walkthrough](ducksocial.gif)
+![Video Walkthrough](ducksocial2.gif)
 
 ## User Stories
 

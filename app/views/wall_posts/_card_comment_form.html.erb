@@ -9,7 +9,7 @@
       </div>
 
       <div class="media-content">
-        <%= form_for comment do |f| %>
+        <%= form_for comment, remote: true do |f| %>
           <div class="field">
             <div class="control">
               <%= f.hidden_field :wall_post_id, value: wall_post.id %>

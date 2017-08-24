@@ -1,12 +1,10 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.create(comment_params)
-    if comment.save
-      flash[:success] = "Comment added."
-      redirect_back fallback_location: newsfeed_path
-    else
-      flash[:error] = "Something went wrong. Please try again."
-      redirect_back fallback_location: newsfeed_path
+    @comment = current_user.comments.create(comment_params)
+
+    respond_to do |format|
+      format.html {redirect_back fallback_location: newsfeed_path}
+      format.js
     end
   end
 

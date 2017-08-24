@@ -3,7 +3,9 @@
     <% if wall_post.comments.empty? %>
       No comments yet. Be the first to comment!
     <% else %>
-      <%= render wall_post.comments %>
+      <div class="comments">
+        <%= render wall_post.comments %>
+      </div>
     <% end %>
   </div>
 </div>

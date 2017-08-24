@@ -1,0 +1,22 @@
+  <div class="card" style="margin-right: 20px; margin-bottom: 20px; margin-top: 10px;">
+    <div class="card-content is-clearfix">
+        <div class="media-left is-pulled-left">
+          <figure class="image is-96x96">
+            <img src="<%= user.avatar %>" alt="Image" style="border-radius: 50%;">
+          </figure>
+        </div>
+        <div class="media-content is-pulled-left">
+          <p class="title is-4"><%= user.fullname %></p>
+          <p class="subtitle is-6" style="margin-top: 2px;">Number of Friends: <%= user.friends.count%><br>
+          Friended by: <%= Friendship.friended_by_count(user) %></p>
+      </div>
+      <% if current_user.is_friend?(user) %>
+        <%= link_to icon("user-times", "Remove friend"), unfriend_path(friend_id: user.id), class: "button is-info is-pulled-right", method: :delete %>
+      <% else %>
+        <%= form_for current_user.friendships.build(friend: user) do |f| %>
+          <%= f.hidden_field :friend_id %>
+          <%= button_tag "Add Friend", class: "button is-primary is-pulled-right" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

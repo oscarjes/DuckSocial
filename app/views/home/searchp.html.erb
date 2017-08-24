@@ -1,0 +1,28 @@
+<div class="columns">
+    <div class="column">
+      <%= render 'layouts/menu' %>
+    </div>
+    <div class="column is-half" style="margin-top: 25px;">
+      <div class="tabs is-centered is-boxed is-medium">
+        <ul>
+          <li>
+            <a href="<%= search_u_path(q: params[:q]) %>">
+              <span class="icon is-small"><i class="fa fa-inbox"></i></span>
+              <span>Users</span>
+            </a>
+          </li>
+          <li class="is-active">
+            <a href="<%= search_p_path(q: params[:q]) %>">
+              <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+              <span>Posts</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+        <% @wall_posts.each do |wall_post| %>
+          <%= render 'home/search_posts', wall_post: wall_post %>
+        <% end %>
+    </div>
+    <div class="column">
+    </div>
+  </div>

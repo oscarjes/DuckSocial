@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get 'newsfeed' => 'wall_posts#index'
   post "toggle_like" => "likes#toggle"
   get 'walls/:id' => 'walls#show', as: 'wall'
+  get 'search/u' => 'home#searchu'
+  get 'search/p' => 'home#searchp'
 end

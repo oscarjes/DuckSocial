@@ -1,0 +1,27 @@
+  <div class="card" style="margin-right: 20px; margin-bottom: 20px; margin-top: 10px;">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="<%= wall_post.author.avatar %>" alt="Image" style="border-radius: 50%;">
+          </figure>
+        </div>
+        <div class="media-content">
+          <% if wall_post.image.present? %>
+            <%= image_tag wall_post.image, style: "margin-bottom: 10px;"%>
+          <% end %>
+          <p class="subtitle is-6"><%= wall_post.body %></p>
+          <p style="font-style: italic; font-size: small">Posted by: 
+            <%= link_to wall_post.author.fullname, wall_path(id: wall_post.author.id) %>
+              <% unless wall_post.mention_id == nil %>
+                on <%= link_to User.mentioned_name(wall_post), wall_path(id: wall_post.mention_id) %>'s Wall
+              <% end %>
+            <%= time_ago_in_words(wall_post.created_at) %> ago</p>
+            <p style="font-style: italic; font-size: small"> 
+            <% if wall_post.mentions.any? %>
+              <%= display_mentions(wall_post) %>
+            <% end %></p>
+        </div>
+      </div> 
+    </div>
+  </div>

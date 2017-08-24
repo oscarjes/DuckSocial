@@ -1,0 +1,10 @@
+ <div class="card-footer likes-sentence">
+  <% if wall_post.likes.count > 0 %>
+    <p class="card-footer-item">
+      <%= fa_icon("thumbs-up", text: "") %>
+      <small style="font-style: italic;">
+        <%= wall_post.likes.map {|l| l.user.fullname}.to_sentence %>
+      </small>
+    </p>
+  <% end %>
+</div>

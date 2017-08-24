@@ -1,5 +1,12 @@
 <% if @item.class == WallPost %>
   $("#<%= dom_id @item %>").find(".js-like-button").toggleClass("is-liked");
+  $("#<%= dom_id @item %>").find(".likes-sentence").replaceWith("<%= j render 'wall_posts/likes_sentence', wall_post: @item %>");
 <% else %>
   $("#<%= dom_id @item %>").toggleClass("is-liked");
 <% end %>
+
+
+
+
+
+

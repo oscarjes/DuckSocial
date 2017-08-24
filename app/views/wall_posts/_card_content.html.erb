@@ -24,16 +24,7 @@
   </div> 
 </div>
 
-<% if wall_post.likes.count > 0 %>
-  <div class="card-footer">
-    <p class="card-footer-item">
-      <%= fa_icon("thumbs-up", text: "") %>
-      <small style="font-style: italic;">
-        <%= wall_post.likes.map {|l| l.user.fullname}.to_sentence %>
-      </small>
-    </p>
-  </div>
-<% end %>
+  <%= render "wall_posts/likes_sentence", wall_post: wall_post %> 
 
 <div class="card-footer">
   <div class="level">

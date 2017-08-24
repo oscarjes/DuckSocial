@@ -8,7 +8,9 @@ class HomeController < ApplicationController
     @users = User.where.not(id: current_user.id)
     
     if params[:q]
-      @users = @users.select{|s| s.fullname.include?(params[:q])}
+      search = params[:q]
+      search = search.downcase
+      @users = @users.select{|s| s.fullname.downcase.include?(params[:q])}
     end
   end
 
@@ -16,7 +18,9 @@ class HomeController < ApplicationController
     @wall_posts = WallPost.all
     
     if params[:q]
-      @wall_posts = @wall_posts.select{|s| s.body.include?(params[:q])}
+      search = params[:q]
+      search = search.downcase
+      @wall_posts = @wall_posts.select{|s| s.body.downcase.include?(search)}
     end
   end
 end

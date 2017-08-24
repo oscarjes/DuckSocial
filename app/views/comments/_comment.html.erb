@@ -12,7 +12,6 @@
                 class: "button is-white #{"is-liked" if current_user.likes.where(item: comment).first}", 
                 method: "post", id: "#{dom_id comment}", remote: true %>
           <%= render 'comments/comment_likes_sentence', comment: comment %>
-
         </div>
       </div>
   </div>

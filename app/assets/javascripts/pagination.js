@@ -1,5 +1,6 @@
 $(document).on("turbolinks:load", setupInfiniteScroll)
 
+
 // just a dummy function for now. we will copy-and-paste a real function later
 function setupInfiniteScroll(e) {
   const THRESHOLD = 300;
@@ -11,6 +12,8 @@ function setupInfiniteScroll(e) {
   let currentPage = 1;
   let baseEndpoint;
 
+  if($("#wall-posts").length === 1){
+
   /* validate if the pagination URL has query params */
   if (paginationUrl.indexOf('?') != -1) {
     baseEndpoint = paginationUrl + "&page="
@@ -21,7 +24,7 @@ function setupInfiniteScroll(e) {
   /* initialize pagination */
   // $paginationElem.hide()
   let isPaginating = false
-
+  
   /* listen to scrolling */
   $window.on('scroll', debounce(function () {
     //console.log("scrolling", "current page: ", currentPage, "total pages: ", pagesAmount);
@@ -63,4 +66,5 @@ function debounce(func, wait, immediate) {
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
     };
+};
 };

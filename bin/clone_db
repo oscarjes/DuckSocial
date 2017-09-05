@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rails db:drop
+heroku pg:pull DATABASE_URL pulleddb --remote prod

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+heroku pg:push minimalnet_development DATABASE_URL --remote stag

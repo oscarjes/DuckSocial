@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+heroku pg:copy duckstaging::DATABASE_URL DATABASE_URL -r stag

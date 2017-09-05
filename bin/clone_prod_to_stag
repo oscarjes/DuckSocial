@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+heroku pg:pull DATABASE_URL newdb --remote stag
+heroku pg:reset --remote prod
+heroku pg:push newdb DATABASE_URL --remote prod
